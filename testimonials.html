@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | A4 Celebration - The Best Event Agency</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .testimonials-page {
+            padding: 80px 0;
+        }
+        .rating-summary-gold {
+            background: var(--black-light);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        .rating-summary-gold h2 {
+            font-size: 3.5rem;
+            color: var(--gold);
+        }
+        .stars-large {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 15px 0;
+        }
+        .google-reviews-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .testimonials-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card-gold {
+            background: var(--black-light);
+            padding: 35px;
+            border-radius: 20px;
+            transition: var(--transition);
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+        .testimonial-card-gold:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212,175,55,0.3);
+        }
+        .testimonial-card-gold i {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .testimonial-card-gold p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--gray);
+        }
+        .client-avatar-gold {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--gold);
+        }
+        .client-info-gold {
+            display: flex;
+            align-items: center;
+        }
+        .client-details h4 {
+            margin-bottom: 5px;
+        }
+        .client-details .stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .testimonials-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .rating-summary-gold {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="logo-name">A4<span class="gold">Celebration</span></span>
+                <span class="logo-tag">The Best Event Agency</span>
+            </div>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="events.html" class="nav-link">Events</a></li>
+            <li><a href="packages.html" class="nav-link">Packages</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-link active">Testimonials</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="#" class="nav-link login-trigger">Login/SignUp</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Client <span>Testimonials</span></h1>
+        <p>What our happy clients say about us</p>
+    </div>
+</section>
+
+<section class="testimonials-page">
+    <div class="container">
+        <div class="rating-summary-gold">
+            <h2>5.0 <span style="font-size: 1rem;">/ 5.0</span></h2>
+            <div class="stars-large">★★★★★</div>
+            <p>Based on 13+ Google Reviews</p>
+            <a href="https://www.google.com/search?q=a4celebration" target="_blank" class="google-reviews-link">
+                <i class="fab fa-google"></i> View all Google Reviews →
+            </a>
+        </div>
+
+        <div class="testimonials-grid-full">
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"Best in kanpur and staff are polite in nature. They made our event truly special with their attention to detail."</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Rajesh Sharma</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"We're grateful for the unforgettable atmosphere you created. The decoration and coordination were perfect!"</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Priya Verma</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"Best place for events. Professional team, beautiful decorations, and everything on time. Highly recommended!"</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Amit Patel</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"Amazing service! They made my daughter's birthday party a huge success. The themed decoration was stunning."</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Neha Gupta</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"Very professional team. They listened to all our requirements and delivered exactly what we wanted. Will definitely use again!"</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Vikram Singh</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card-gold">
+                <i class="fas fa-quote-left"></i>
+                <p>"Excellent service at reasonable prices. The team was punctual and the decoration was stunning. Highly recommend A4 Celebration!"</p>
+                <div class="client-info-gold">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client" class="client-avatar-gold">
+                    <div class="client-details">
+                        <h4>Kavita Joshi</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/60x60?text=A4" alt="Logo">
+                <div><h3>A4<span>Celebration</span></h3><p>The Best Event Agency</p></div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group"><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="events.html">Events</a></li><li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+                <div class="link-group"><h4>Support</h4><ul><li><a href="testimonials.html">Testimonials</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#" class="login-trigger">Login/SignUp</a></li></ul></div>
+                <div class="link-group contact-info-footer"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> 8858185433</li><li><i class="fas fa-phone"></i> 8750200811</li><li><i class="fas fa-envelope"></i> info@a4celebration.com</li><li><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Kanpur</li></ul></div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61562203856563" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-bottom"><p>© 2025 A4 Celebration - The Best Event Agency. Made with <i class="fas fa-heart"></i> in Kanpur</p></div>
+    </div>
+</footer>
+
+<a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Need help? Chat with us!</span></a>
+
+<script src="../script.js"></script>
+</body>
+</html>

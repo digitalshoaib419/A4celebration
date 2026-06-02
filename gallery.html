@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | A4 Celebration - The Best Event Agency</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gallery-page {
+            padding: 80px 0;
+        }
+        .gallery-filters {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .filter-btn-gold {
+            background: transparent;
+            border: 1px solid rgba(212,175,55,0.3);
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--white);
+        }
+        .filter-btn-gold.active, .filter-btn-gold:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        .gallery-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .gallery-item-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            height: 280px;
+        }
+        .gallery-item-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item-card:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(212,175,55,0.95));
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .gallery-item-card:hover .gallery-item-overlay {
+            bottom: 0;
+        }
+        .gallery-item-overlay i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .gallery-item-overlay p {
+            font-weight: 500;
+        }
+        /* Lightbox */
+        .lightbox-gold {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .lightbox-gold.active {
+            display: flex;
+        }
+        .lightbox-content-gold {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-img-gold {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+        }
+        .lightbox-close-gold {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 45px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .lightbox-close-gold:hover {
+            color: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .gallery-grid-full {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="logo-name">A4<span class="gold">Celebration</span></span>
+                <span class="logo-tag">The Best Event Agency</span>
+            </div>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="events.html" class="nav-link">Events</a></li>
+            <li><a href="packages.html" class="nav-link">Packages</a></li>
+            <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="#" class="nav-link login-trigger">Login/SignUp</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Our <span>Gallery</span></h1>
+        <p>Some memorable moments from our events</p>
+    </div>
+</section>
+
+<section class="gallery-page">
+    <div class="container">
+        <div class="gallery-filters">
+            <button class="filter-btn-gold active" data-filter="all">All</button>
+            <button class="filter-btn-gold" data-filter="birthday">Birthday</button>
+            <button class="filter-btn-gold" data-filter="anniversary">Anniversary</button>
+            <button class="filter-btn-gold" data-filter="baby">Baby Shower</button>
+            <button class="filter-btn-gold" data-filter="corporate">Corporate</button>
+        </div>
+
+        <div class="gallery-grid-full" id="galleryGrid">
+            <div class="gallery-item-card" data-category="birthday">
+                <img src="https://images.unsplash.com/photo-1464366400600-7168b5af510e?w=500" alt="Birthday">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Birthday Celebration</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="birthday">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500" alt="Birthday Cake">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Designer Cake</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="anniversary">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500" alt="Anniversary">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Anniversary Celebration</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="anniversary">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500" alt="Romantic">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Romantic Setup</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="baby">
+                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500" alt="Baby Shower">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Baby Shower</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="baby">
+                <img src="https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=500" alt="Godh Bharai">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Godh Bharai</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="corporate">
+                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500" alt="Corporate">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Corporate Event</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="corporate">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500" alt="Award">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Award Ceremony</p></div>
+            </div>
+            <div class="gallery-item-card" data-category="birthday">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" alt="Party">
+                <div class="gallery-item-overlay"><i class="fas fa-search-plus"></i><p>Party Decoration</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox-gold" id="lightbox">
+    <span class="lightbox-close-gold">&times;</span>
+    <div class="lightbox-content-gold">
+        <img class="lightbox-img-gold" src="" alt="">
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/60x60?text=A4" alt="Logo">
+                <div><h3>A4<span>Celebration</span></h3><p>The Best Event Agency</p></div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group"><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="events.html">Events</a></li><li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+                <div class="link-group"><h4>Support</h4><ul><li><a href="testimonials.html">Testimonials</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#" class="login-trigger">Login/SignUp</a></li></ul></div>
+                <div class="link-group contact-info-footer"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> 8858185433</li><li><i class="fas fa-phone"></i> 8750200811</li><li><i class="fas fa-envelope"></i> info@a4celebration.com</li><li><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Kanpur</li></ul></div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61562203856563" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-bottom"><p>© 2025 A4 Celebration - The Best Event Agency. Made with <i class="fas fa-heart"></i> in Kanpur</p></div>
+    </div>
+</footer>
+
+<a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Need help? Chat with us!</span></a>
+
+<script src="../script.js"></script>
+<script>
+    // Gallery Filter
+    const filterBtns = document.querySelectorAll('.filter-btn-gold');
+    const galleryItems = document.querySelectorAll('.gallery-item-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            galleryItems.forEach(item => {
+                if(filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img-gold');
+    const galleryImgs = document.querySelectorAll('.gallery-item-card');
+    
+    galleryImgs.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    document.querySelector('.lightbox-close-gold').addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
+</body>
+</html>

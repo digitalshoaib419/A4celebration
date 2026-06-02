@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages | A4 Celebration - The Best Event Agency</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .packages-page {
+            padding: 80px 0;
+        }
+        .packages-grid-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .package-card-premium {
+            background: var(--black-light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(212,175,55,0.1);
+            position: relative;
+        }
+        .package-card-premium:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212,175,55,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .package-card-premium.popular {
+            border: 2px solid var(--gold);
+            transform: scale(1.02);
+        }
+        .popular-badge-gold {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--black);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .package-header-gold {
+            background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212,175,55,0.2);
+        }
+        .package-header-gold h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .package-price-gold {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        .package-price-gold span {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: var(--gray);
+        }
+        .package-body-gold {
+            padding: 30px;
+        }
+        .package-body-gold ul {
+            list-style: none;
+        }
+        .package-body-gold li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .package-body-gold li:last-child {
+            border-bottom: none;
+        }
+        .package-body-gold .fa-check {
+            color: var(--gold);
+            width: 20px;
+        }
+        .package-body-gold .fa-times {
+            color: var(--gray);
+            width: 20px;
+        }
+        .package-footer-gold {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        .comparison-table-gold {
+            background: var(--black-light);
+            border-radius: 20px;
+            padding: 30px;
+            overflow-x: auto;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+        .comparison-table-gold h3 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .comparison-table-gold table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table-gold th, .comparison-table-gold td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .comparison-table-gold th {
+            background: rgba(212,175,55,0.1);
+            color: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .packages-grid-full {
+                grid-template-columns: 1fr;
+            }
+            .package-card-premium.popular {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="logo-name">A4<span class="gold">Celebration</span></span>
+                <span class="logo-tag">The Best Event Agency</span>
+            </div>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="events.html" class="nav-link">Events</a></li>
+            <li><a href="packages.html" class="nav-link active">Packages</a></li>
+            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="#" class="nav-link login-trigger">Login/SignUp</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Our <span>Packages</span></h1>
+        <p>Choose the perfect plan for your celebration</p>
+    </div>
+</section>
+
+<section class="packages-page">
+    <div class="container">
+        <div class="packages-grid-full">
+            <!-- Basic Package -->
+            <div class="package-card-premium">
+                <div class="package-header-gold">
+                    <h3>Basic</h3>
+                    <div class="package-price-gold">₹5,000 <span>/event</span></div>
+                </div>
+                <div class="package-body-gold">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Basic Decoration</li>
+                        <li><i class="fas fa-check"></i> 2 Hours Duration</li>
+                        <li><i class="fas fa-check"></i> Simple Cake (1kg)</li>
+                        <li><i class="fas fa-check"></i> Up to 20 Guests</li>
+                        <li><i class="fas fa-times"></i> Photographer</li>
+                        <li><i class="fas fa-times"></i> Return Gifts</li>
+                        <li><i class="fas fa-times"></i> DJ/Music</li>
+                    </ul>
+                </div>
+                <div class="package-footer-gold">
+                    <a href="contact.html" class="btn-primary">Book Now →</a>
+                </div>
+            </div>
+
+            <!-- Premium Package (Popular) -->
+            <div class="package-card-premium popular">
+                <div class="popular-badge-gold">⭐ Most Popular</div>
+                <div class="package-header-gold">
+                    <h3>Premium</h3>
+                    <div class="package-price-gold">₹15,000 <span>/event</span></div>
+                </div>
+                <div class="package-body-gold">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Theme Decoration</li>
+                        <li><i class="fas fa-check"></i> 4 Hours Duration</li>
+                        <li><i class="fas fa-check"></i> Designer Cake (2kg)</li>
+                        <li><i class="fas fa-check"></i> Up to 50 Guests</li>
+                        <li><i class="fas fa-check"></i> Professional Photographer</li>
+                        <li><i class="fas fa-check"></i> Return Gifts (50 pcs)</li>
+                        <li><i class="fas fa-times"></i> DJ/Music</li>
+                    </ul>
+                </div>
+                <div class="package-footer-gold">
+                    <a href="contact.html" class="btn-primary">Book Now →</a>
+                </div>
+            </div>
+
+            <!-- Deluxe Package -->
+            <div class="package-card-premium">
+                <div class="package-header-gold">
+                    <h3>Deluxe</h3>
+                    <div class="package-price-gold">₹30,000+ <span>/event</span></div>
+                </div>
+                <div class="package-body-gold">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Premium Theme Decoration</li>
+                        <li><i class="fas fa-check"></i> 6 Hours Duration</li>
+                        <li><i class="fas fa-check"></i> Luxury Cake (3kg+)</li>
+                        <li><i class="fas fa-check"></i> 100+ Guests</li>
+                        <li><i class="fas fa-check"></i> Photography + Videography</li>
+                        <li><i class="fas fa-check"></i> Premium Return Gifts</li>
+                        <li><i class="fas fa-check"></i> DJ + Live Music</li>
+                    </ul>
+                </div>
+                <div class="package-footer-gold">
+                    <a href="contact.html" class="btn-primary">Book Now →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="comparison-table-gold">
+            <h3>Package <span class="gold">Comparison</span></h3>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr><th>Features</th><th>Basic</th><th>Premium</th><th>Deluxe</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Decoration</td><td>Basic</td><td>Theme Based</td><td>Premium Theme</td></tr>
+                        <tr><td>Duration</td><td>2 Hours</td><td>4 Hours</td><td>6 Hours</td></tr>
+                        <tr><td>Cake</td><td>1kg Simple</td><td>2kg Designer</td><td>3kg+ Luxury</td></tr>
+                        <tr><td>Guest Capacity</td><td>20</td><td>50</td><td>100+</td></tr>
+                        <tr><td>Photographer</td><td><i class="fas fa-times"></i></td><td><i class="fas fa-check"></i></td><td><i class="fas fa-check"></i></td></tr>
+                        <tr><td>Videography</td><td><i class="fas fa-times"></i></td><td><i class="fas fa-times"></i></td><td><i class="fas fa-check"></i></td></tr>
+                        <tr><td>Return Gifts</td><td><i class="fas fa-times"></i></td><td><i class="fas fa-check"></i></td><td><i class="fas fa-check"></i></td></tr>
+                        <tr><td>DJ/Music</td><td><i class="fas fa-times"></i></td><td><i class="fas fa-times"></i></td><td><i class="fas fa-check"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta" style="background: linear-gradient(135deg, var(--black-light), var(--black)); border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2); margin: 40px 0;">
+    <div class="container">
+        <div class="cta-content" style="text-align: center; padding: 60px 0;">
+            <h2 style="font-size: 2rem;">Need a <span class="gold">Custom Package?</span></h2>
+            <p style="color: var(--gray); margin: 20px 0;">Contact us for personalized quotes and tailor-made packages</p>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/60x60?text=A4" alt="Logo">
+                <div><h3>A4<span>Celebration</span></h3><p>The Best Event Agency</p></div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group"><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="events.html">Events</a></li><li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+                <div class="link-group"><h4>Support</h4><ul><li><a href="testimonials.html">Testimonials</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#" class="login-trigger">Login/SignUp</a></li></ul></div>
+                <div class="link-group contact-info-footer"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> 8858185433</li><li><i class="fas fa-phone"></i> 8750200811</li><li><i class="fas fa-envelope"></i> info@a4celebration.com</li><li><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Kanpur</li></ul></div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61562203856563" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-bottom"><p>© 2025 A4 Celebration - The Best Event Agency. Made with <i class="fas fa-heart"></i> in Kanpur</p></div>
+    </div>
+</footer>
+
+<a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Need help? Chat with us!</span></a>
+
+<script src="../script.js"></script>
+</body>
+</html>

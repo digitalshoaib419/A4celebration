@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Celebration | The Best Event Agency - Kanpur</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+
+<!-- ========== PRELOADER ========== -->
+<div class="preloader">
+    <div class="golden-loader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">A4</div>
+    </div>
+</div>
+
+<!-- ========== NAVIGATION BAR ========== -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="logo-name">A4<span class="gold">Celebration</span></span>
+                <span class="logo-tag">The Best Event Agency</span>
+            </div>
+        </div>
+        <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="pages/events.html" class="nav-link">Events</a></li>
+            <li><a href="pages/packages.html" class="nav-link">Packages</a></li>
+            <li><a href="pages/gallery.html" class="nav-link">Gallery</a></li>
+            <li><a href="pages/testimonials.html" class="nav-link">Testimonials</a></li>
+            <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+            <li><a href="#" class="nav-link login-trigger" id="loginTrigger">Login/SignUp</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ========== LOGIN/SIGNUP POPUP ========== -->
+<div class="auth-popup" id="authPopup">
+    <div class="auth-popup-overlay"></div>
+    <div class="auth-popup-container">
+        <div class="auth-popup-close"><i class="fas fa-times"></i></div>
+        <div class="auth-tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="signup">Sign Up</button>
+        </div>
+        <div class="auth-form-container">
+            <!-- Login Form -->
+            <div class="auth-form active" id="loginFormPopup">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" id="popupLoginEmail">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="popupLoginPassword">
+                </div>
+                <button class="auth-btn" id="popupLoginBtn">Login</button>
+                <div class="forgot-link"><a href="#">Forgot Password?</a></div>
+            </div>
+            <!-- Signup Form -->
+            <div class="auth-form" id="signupFormPopup">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Full Name" id="popupSignupName">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" id="popupSignupEmail">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" placeholder="Phone Number" id="popupSignupPhone">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" id="popupSignupPassword">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Confirm Password" id="popupSignupConfirm">
+                </div>
+                <button class="auth-btn" id="popupSignupBtn">Create Account</button>
+            </div>
+        </div>
+        <div class="auth-social">
+            <p>Or continue with</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-google"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="hero">
+    <div class="hero-bg-animation"></div>
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-text">
+                <span class="hero-badge">✨ Premium Event Agency Since 2015</span>
+                <h1 class="glow-text">Creating <span class="gold">Experiences</span><br>Celebrating <span class="gold">Moments</span></h1>
+                <p class="tagline">Making Your Moments Memorable</p>
+                <p class="description">Complete event solutions from decorations to unforgettable celebrations in Kanpur</p>
+                <div class="hero-buttons">
+                    <a href="pages/events.html" class="btn-primary">Book Your Event <i class="fas fa-arrow-right"></i></a>
+                    <a href="pages/contact.html" class="btn-outline">Contact Us <i class="fas fa-headset"></i></a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number" data-count="500">0</div>
+                        <p>Events Completed</p>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-count="1000">0</div>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" data-count="5.0">5.0</div>
+                        <p>Google Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll">
+        <span>Scroll Down</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+</section>
+
+<!-- ========== GOOGLE REVIEWS BANNER ========== -->
+<section class="google-reviews-banner">
+    <div class="container">
+        <div class="reviews-scroll">
+            <div class="review-item">
+                <i class="fab fa-google"></i>
+                <div class="rating">★★★★★</div>
+                <p>"Best in kanpur and staff are polite in nature"</p>
+                <span>- Happy Client</span>
+            </div>
+            <div class="review-item">
+                <i class="fab fa-google"></i>
+                <div class="rating">★★★★★</div>
+                <p>"We're grateful for the unforgettable atmosphere you created"</p>
+                <span>- Satisfied Customer</span>
+            </div>
+            <div class="review-item">
+                <i class="fab fa-google"></i>
+                <div class="rating">★★★★★</div>
+                <p>"Best place for events"</p>
+                <span>- Event Enthusiast</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FEATURED SERVICES ========== -->
+<section class="featured-services">
+    <div class="container">
+        <div class="section-header">
+            <span class="subtitle">What We Offer</span>
+            <h2>Our <span class="gold">Premium Services</span></h2>
+            <div class="golden-line"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                <h3>Birthday Parties</h3>
+                <p>Themed decorations, custom cakes, entertainment, photography & complete event management</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-ring"></i></div>
+                <h3>Wedding Anniversary</h3>
+                <p>Romantic setups, flower decorations, couple photoshoot, catering & entertainment</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-baby-carriage"></i></div>
+                <h3>Baby Shower</h3>
+                <p>Traditional godh bharai ceremony, sweets, decoration, games & return gifts</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Graduation Party</h3>
+                <p>Success celebration, photo booth, catering, stage decoration & music arrangements</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Corporate Events</h3>
+                <p>Annual days, product launches, team building, award ceremonies & conferences</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-icon"><i class="fas fa-tree"></i></div>
+                <h3>Festival Celebrations</h3>
+                <p>Diwali parties, Holi celebrations, Christmas decorations & New Year galas</p>
+                <a href="pages/events.html" class="service-link">Explore <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABOUT & INFO ========== -->
+<section class="about-premium">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content" data-aos="fade-right">
+                <span class="subtitle">About Us</span>
+                <h2>A4<span class="gold">Celebration</span></h2>
+                <h3>The Best Event Agency in Kanpur</h3>
+                <p>At A4 Celebration, we believe every occasion deserves to be special, stress-free, and unforgettable. From beautiful decorations to thoughtful gifts, we provide complete event solutions that bring your vision to life.</p>
+                <div class="info-grid">
+                    <div class="info-item"><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Lakhanpur, Kanpur</div>
+                    <div class="info-item"><i class="fas fa-phone-alt"></i> 8858185433 | 8750200811</div>
+                    <div class="info-item"><i class="fas fa-clock"></i> Open Daily • Closes 8 pm</div>
+                    <div class="info-item"><i class="fas fa-globe"></i> Serving Kanpur & Nearby Areas</div>
+                </div>
+                <a href="pages/contact.html" class="btn-primary">Get a Free Quote</a>
+            </div>
+            <div class="about-stats" data-aos="fade-left">
+                <div class="stats-card">
+                    <div class="stat-circle">
+                        <div class="stat-circle-inner">
+                            <span class="stat-number">5.0</span>
+                            <span class="stat-label">Google Rating</span>
+                        </div>
+                    </div>
+                    <div class="stat-circle">
+                        <div class="stat-circle-inner">
+                            <span class="stat-number">13+</span>
+                            <span class="stat-label">Google Reviews</span>
+                        </div>
+                    </div>
+                    <div class="stat-circle">
+                        <div class="stat-circle-inner">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Exp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== GALLERY PREVIEW ========== -->
+<section class="gallery-preview">
+    <div class="container">
+        <div class="section-header">
+            <span class="subtitle">Memories</span>
+            <h2>Our <span class="gold">Event Gallery</span></h2>
+            <div class="golden-line"></div>
+        </div>
+        <div class="gallery-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide gallery-item"><img src="https://images.unsplash.com/photo-1464366400600-7168b5af510e?w=500" alt="Event"></div>
+                <div class="swiper-slide gallery-item"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500" alt="Event"></div>
+                <div class="swiper-slide gallery-item"><img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500" alt="Event"></div>
+                <div class="swiper-slide gallery-item"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500" alt="Event"></div>
+                <div class="swiper-slide gallery-item"><img src="https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=500" alt="Event"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== WHATSAPP FLOATING BUTTON ========== -->
+<a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Need help? Chat with us!</span>
+</a>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://via.placeholder.com/60x60?text=A4" alt="Logo">
+                <div>
+                    <h3>A4<span>Celebration</span></h3>
+                    <p>The Best Event Agency</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/events.html">Events</a></li>
+                        <li><a href="pages/packages.html">Packages</a></li>
+                        <li><a href="pages/gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="pages/testimonials.html">Testimonials</a></li>
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                        <li><a href="#" class="login-trigger">Login/SignUp</a></li>
+                    </ul>
+                </div>
+                <div class="link-group contact-info-footer">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 8858185433</li>
+                        <li><i class="fas fa-phone"></i> 8750200811</li>
+                        <li><i class="fas fa-envelope"></i> info@a4celebration.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Kanpur</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61562203856563" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 A4 Celebration - The Best Event Agency. Made with <i class="fas fa-heart"></i> in Kanpur</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
