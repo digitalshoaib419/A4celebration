@@ -1,235 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonials | A4 Celebration - The Best Event Agency</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A4 Celebration | Testimonials - What Our Clients Say</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .testimonials-page {
-            padding: 80px 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .rating-summary-gold {
-            background: var(--black-light);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
-            margin-bottom: 60px;
-            border: 1px solid rgba(212,175,55,0.2);
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
-        .rating-summary-gold h2 {
-            font-size: 3.5rem;
+
+        :root {
+            --gold: #c9a03d;
+        }
+
+        .gold {
             color: var(--gold);
         }
-        .stars-large {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin: 15px 0;
-        }
-        .google-reviews-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            color: var(--gold);
-            text-decoration: none;
-        }
-        .testimonials-grid-full {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        .testimonial-card-gold {
-            background: var(--black-light);
-            padding: 35px;
-            border-radius: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(212,175,55,0.1);
-        }
-        .testimonial-card-gold:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212,175,55,0.3);
-        }
-        .testimonial-card-gold i {
-            font-size: 40px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-        .testimonial-card-gold p {
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: var(--gray);
-        }
-        .client-avatar-gold {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-            border: 2px solid var(--gold);
-        }
-        .client-info-gold {
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
             display: flex;
             align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s;
         }
-        .client-details h4 {
-            margin-bottom: 5px;
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
         }
-        .client-details .stars {
+
+        .preloader-ring {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(201, 160, 61, 0.2);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 160, 61, 0.2);
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+        }
+
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            color: #999;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--gold);
-            font-size: 0.8rem;
         }
-        @media (max-width: 768px) {
-            .testimonials-grid-full {
-                grid-template-columns: 1fr;
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #0a0a0a;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #d4b04c;
+            transform: translateY(-2px);
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 65px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .rating-summary {
+            background: #121212;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto 3rem;
+            border: 1px solid rgba(201, 160, 61, 0.2);
+        }
+
+        .big-rating {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #121212;
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--gold);
+            transition: 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: #181818;
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .client-name {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .client-rating {
+            color: var(--gold);
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .google-badge {
+            display: inline-block;
+            background: rgba(201, 160, 61, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            background: #0a0a0a;
+            border-top: 2px solid #d4af37;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            z-index: 99;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .nav-menu {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: #0a0a0a;
+                width: 70%;
+                height: 100vh;
+                padding: 2rem;
+                transition: 0.3s;
+                border-right: 2px solid var(--gold);
             }
-            .rating-summary-gold {
-                padding: 30px;
+
+            .nav-menu.active {
+                left: 0;
             }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
+
 <body>
 
-<nav class="navbar">
-    <div class="container">
-        <div class="logo">
-            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
-            <div class="logo-text">
-                <span class="logo-name">A4<span class="gold">Celebration</span></span>
-                <span class="logo-tag">The Best Event Agency</span>
-            </div>
-        </div>
-        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
-        <ul class="nav-menu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="events.html" class="nav-link">Events</a></li>
-            <li><a href="packages.html" class="nav-link">Packages</a></li>
-            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-            <li><a href="testimonials.html" class="nav-link active">Testimonials</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><a href="#" class="nav-link login-trigger">Login/SignUp</a></li>
-        </ul>
-    </div>
-</nav>
-
-<section class="page-header">
-    <div class="container">
-        <h1>Client <span>Testimonials</span></h1>
-        <p>What our happy clients say about us</p>
-    </div>
-</section>
-
-<section class="testimonials-page">
-    <div class="container">
-        <div class="rating-summary-gold">
-            <h2>5.0 <span style="font-size: 1rem;">/ 5.0</span></h2>
-            <div class="stars-large">★★★★★</div>
-            <p>Based on 13+ Google Reviews</p>
-            <a href="https://www.google.com/search?q=a4celebration" target="_blank" class="google-reviews-link">
-                <i class="fab fa-google"></i> View all Google Reviews →
-            </a>
-        </div>
-
-        <div class="testimonials-grid-full">
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"Best in kanpur and staff are polite in nature. They made our event truly special with their attention to detail."</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Rajesh Sharma</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"We're grateful for the unforgettable atmosphere you created. The decoration and coordination were perfect!"</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Priya Verma</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"Best place for events. Professional team, beautiful decorations, and everything on time. Highly recommended!"</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Amit Patel</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"Amazing service! They made my daughter's birthday party a huge success. The themed decoration was stunning."</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Neha Gupta</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"Very professional team. They listened to all our requirements and delivered exactly what we wanted. Will definitely use again!"</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Vikram Singh</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card-gold">
-                <i class="fas fa-quote-left"></i>
-                <p>"Excellent service at reasonable prices. The team was punctual and the decoration was stunning. Highly recommend A4 Celebration!"</p>
-                <div class="client-info-gold">
-                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Client" class="client-avatar-gold">
-                    <div class="client-details">
-                        <h4>Kavita Joshi</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-            </div>
+    <div class="preloader" id="preloader">
+        <div>
+            <div class="preloader-ring"></div>
+            <div style="color:var(--gold);">A4</div>
         </div>
     </div>
-</section>
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://via.placeholder.com/60x60?text=A4" alt="Logo">
-                <div><h3>A4<span>Celebration</span></h3><p>The Best Event Agency</p></div>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <div>
+                    <div class="logo-name">A4<span class="gold">Celebration</span></div>
+                    <div class="logo-tag">The Best Event Agency</div>
+                </div>
             </div>
-            <div class="footer-links">
-                <div class="link-group"><h4>Quick Links</h4><ul><li><a href="../index.html">Home</a></li><li><a href="events.html">Events</a></li><li><a href="packages.html">Packages</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
-                <div class="link-group"><h4>Support</h4><ul><li><a href="testimonials.html">Testimonials</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="#" class="login-trigger">Login/SignUp</a></li></ul></div>
-                <div class="link-group contact-info-footer"><h4>Contact</h4><ul><li><i class="fas fa-phone"></i> 8858185433</li><li><i class="fas fa-phone"></i> 8750200811</li><li><i class="fas fa-envelope"></i> info@a4celebration.com</li><li><i class="fas fa-map-marker-alt"></i> 446, Vikas Nagar, Kanpur</li></ul></div>
+            <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="navMenu">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="packages.html" class="nav-link">Packages</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Book Now</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Client <span class="gold">Testimonials</span></h1>
+        <div class="gold-line"></div>
+        <p style="max-width: 600px; margin: 1rem auto;">What our happy clients say about A4 Celebration</p>
+    </section>
+
+    <section class="section">
+        <div class="rating-summary reveal">
+            <div class="big-rating">5.0 ★★★★★</div>
+            <p>Rated 5.0 on Google</p>
+            <div class="google-badge"><i class="fab fa-google"></i> 13+ Google Reviews</div>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"A4 Celebration made our 25th anniversary magical. The decor was beyond
+                    expectations, and the team was extremely professional. Highly recommended in Kanpur!"</p>
+                <div class="client-name">— Rajesh & Neha Sharma</div>
+                <div class="client-rating">★★★★★</div>
+                <div class="google-badge"><i class="fab fa-google"></i> Google Review</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"We booked them for my daughter's birthday. The themed decoration and return
+                    gifts were a hit among all kids. Thank you for making her day special."</p>
+                <div class="client-name">— Swati Mehra</div>
+                <div class="client-rating">★★★★★</div>
+                <div class="google-badge"><i class="fab fa-google"></i> Google Review</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Outstanding corporate event management! From sound to stage, everything was
+                    top-notch. The gold and black theme gave a royal feel. Will hire again."</p>
+                <div class="client-name">— Ankit Sharma</div>
+                <div class="client-rating">★★★★★</div>
+                <div class="google-badge"><i class="fab fa-google"></i> Google Review</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"Best event agency in Kanpur! They handled my sister's baby shower
+                    perfectly. The traditional setup was beautiful and all guests loved it."</p>
+                <div class="client-name">— Priya Singh</div>
+                <div class="client-rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"A4 Celebration exceeded our expectations for our graduation party. The
+                    photo booth and DJ were amazing. Very professional team."</p>
+                <div class="client-name">— Rohit Verma</div>
+                <div class="client-rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">"We've used A4 for multiple events - always perfect. Their attention to
+                    detail and customer service is unmatched. Best in Lucknow and Kanpur!"</p>
+                <div class="client-name">— Neha Gupta</div>
+                <div class="client-rating">★★★★★</div>
             </div>
         </div>
-        <div class="footer-social">
-            <a href="https://www.facebook.com/profile.php?id=61562203856563" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+    </section>
+
+    <!-- ========== SIMPLE PROFESSIONAL FOOTER - NO PAYMENT / NO NEWSLETTER ========== -->
+    <footer style="background: #0a0a0a; border-top: 2px solid #d4af37; padding: 3rem 2rem 1.5rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+
+            <!-- Main Footer Grid - 4 Columns (Without Payment & Newsletter) -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+
+                <!-- Column 1: Brand Info -->
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">
+                        A4<span style="color: #d4af37;">Celebration</span>
+                    </h3>
+                    <p style="color: #aaaaaa; margin-bottom: 0.8rem; line-height: 1.5;">The Best Event Agency in Kanpur
+                    </p>
+                    <p style="color: #888888; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                        We create unforgettable moments with elegance, creativity, and flawless execution.
+                    </p>
+                    <!-- Social Icons -->
+                    <div style="display: flex; gap: 0.8rem;">
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Quick Links
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
+                                Home</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#services"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                                Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
+                                About Us</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
+                                Event Gallery</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
+                                Testimonials</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
+                                Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Contact Info
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.9rem; display: flex; align-items: flex-start; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-map-marker-alt" style="color: #d4af37; margin-top: 3px;"></i>
+                            446, Vikas Nagar, Lakhanpur, Kanpur
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8858185433
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8750200811
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-envelope" style="color: #d4af37;"></i>
+                            info@a4celebration.com
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Working Hours & Location Badge -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Working Hours
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Monday - Friday:</span> <span style="color: #d4af37;">10:00 AM - 8:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Saturday:</span> <span style="color: #d4af37;">10:00 AM - 6:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Sunday:</span> <span style="color: #d4af37;">By Appointment</span>
+                        </li>
+                    </ul>
+
+                    <!-- Rating Badge (Extra touch) -->
+                    <div
+                        style="margin-top: 1.2rem; background: #111; padding: 0.8rem; border-radius: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.2);">
+                        <div style="color: #d4af37; font-size: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <div style="color: #aaaaaa; font-size: 0.75rem; margin-top: 0.3rem;">Google Rating 5.0 ★</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Bar -->
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
+                <div style="color: #888888; font-size: 0.75rem;">
+                    © 2025 A4 Celebration — All Rights Reserved.
+                </div>
+                <div style="color: #666; font-size: 0.7rem;">
+                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                </div>
+                <div style="color: #555; font-size: 0.7rem;">
+                    <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
+                        style="color: #777; text-decoration: none;">Terms & Conditions</a>
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom"><p>© 2025 A4 Celebration - The Best Event Agency. Made with <i class="fas fa-heart"></i> in Kanpur</p></div>
-    </div>
-</footer>
+    </footer>
 
-<a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Need help? Chat with us!</span></a>
+    <style>
+        /* Hover Effects for Footer */
+        footer a:hover {
+            color: #d4af37 !important;
+            padding-left: 5px;
+        }
 
-<script src="../script.js"></script>
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+            background: #d4af37;
+            color: #000 !important;
+        }
+
+        /* Smooth transition for all links */
+        footer a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+    </style>
+    <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').classList.add('fade-out');
+            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+            window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
+            document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+        });
+    </script>
 </body>
+
 </html>

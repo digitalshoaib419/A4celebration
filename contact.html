@@ -1,168 +1,607 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | A4 Celebration - The Best Event Agency</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A4 Celebration | Contact - Get in Touch</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
-        .contact-page {
-            padding: 80px 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .contact-grid-gold {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
         }
-        .contact-info-card-gold {
-            background: var(--black-light);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(212,175,55,0.1);
+
+        :root {
+            --gold: #c9a03d;
+            --gold-light: #d4b04c;
         }
-        .contact-info-card-gold h3 {
-            margin-bottom: 25px;
+
+        .gold {
+            color: var(--gold);
         }
-        .contact-detail-gold {
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
             display: flex;
             align-items: center;
-            gap: 18px;
-            margin-bottom: 25px;
-            padding: 15px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 15px;
-            transition: var(--transition);
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s;
         }
-        .contact-detail-gold:hover {
-            background: rgba(212,175,55,0.05);
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
         }
-        .contact-detail-gold i {
-            font-size: 28px;
+
+        .preloader-ring {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(201, 160, 61, 0.2);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 160, 61, 0.2);
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+        }
+
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            color: #999;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #0a0a0a;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 65px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            background: #121212;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .info-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background: #1a1a1a;
+            border-radius: 12px;
+        }
+
+        .info-detail i {
+            font-size: 1.5rem;
             color: var(--gold);
             width: 40px;
         }
-        .contact-detail-gold div strong {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .contact-form-card-gold {
-            background: var(--black-light);
-            padding: 40px;
+
+        .contact-form {
+            background: #121212;
+            padding: 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(212,175,55,0.1);
         }
-        .form-group-gold {
-            margin-bottom: 20px;
+
+        .form-group {
+            margin-bottom: 1.2rem;
         }
-        .form-group-gold input, .form-group-gold select, .form-group-gold textarea {
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 14px 18px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(212,175,55,0.2);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--white);
+            padding: 12px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
         }
-        .form-group-gold input:focus, .form-group-gold select:focus, .form-group-gold textarea:focus {
+
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--gold);
         }
-        .form-group-gold textarea {
-            resize: vertical;
-        }
-        .map-container-gold {
-            margin-top: 50px;
+
+        .map {
+            margin-top: 3rem;
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(212,175,55,0.2);
         }
-        .business-hours {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(212,175,55,0.05);
-            border-radius: 15px;
-            text-align: center;
+
+        .map iframe {
+            width: 100%;
+            height: 350px;
+            border: 1px solid rgba(201, 160, 61, 0.3);
+            border-radius: 16px;
         }
-        @media (max-width: 768px) {
-            .contact-grid-gold {
+
+        footer {
+            background: #0a0a0a;
+            border-top: 2px solid #d4af37;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            z-index: 99;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .nav-menu {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: #0a0a0a;
+                width: 70%;
+                height: 100vh;
+                padding: 2rem;
+                transition: 0.3s;
+                border-right: 2px solid var(--gold);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
-            .contact-info-card-gold, .contact-form-card-gold {
-                padding: 25px;
-            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
+
 <body>
 
-<nav class="navbar">
-    <div class="container">
-        <div class="logo">
-            <img src="https://via.placeholder.com/50x50?text=A4" alt="Logo" class="logo-img">
-            <div class="logo-text">
-                <span class="logo-name">A4<span class="gold">Celebration</span></span>
-                <span class="logo-tag">The Best Event Agency</span>
+    <div class="preloader" id="preloader">
+        <div>
+            <div class="preloader-ring"></div>
+            <div style="color:var(--gold);">A4</div>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <div>
+                    <div class="logo-name">A4<span class="gold">Celebration</span></div>
+                    <div class="logo-tag">The Best Event Agency</div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="navMenu">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="packages.html" class="nav-link">Packages</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Book Now</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Get in <span class="gold">Touch</span></h1>
+        <div class="gold-line"></div>
+        <p style="max-width: 600px; margin: 1rem auto;">We'd love to hear from you. Let's plan your perfect event
+            together.</p>
+    </section>
+
+    <section class="section">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h3>📍 Visit Us</h3>
+                <div class="info-detail"><i class="fas fa-map-marker-alt"></i>
+                    <div><strong>Address</strong><br>446, Vikas Nagar, Lakhanpur, Kanpur - 208024</div>
+                </div>
+                <div class="info-detail"><i class="fas fa-phone-alt"></i>
+                    <div><strong>Phone</strong><br>+91 8858185433<br>+91 8750200811</div>
+                </div>
+                <div class="info-detail"><i class="fas fa-envelope"></i>
+                    <div><strong>Email</strong><br>info@a4celebration.com<br>bookings@a4celebration.com</div>
+                </div>
+                <div class="info-detail"><i class="fas fa-clock"></i>
+                    <div><strong>Working Hours</strong><br>Monday - Friday: 10:00 AM - 8:00 PM<br>Saturday: 10:00 AM -
+                        6:00 PM<br>Sunday: By Appointment</div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <h4 style="color: var(--gold);">Follow Us</h4>
+                    <div style="display: flex; gap: 1rem; margin-top: 0.8rem;"><a href="#"
+                            style="background: #1a1a1a; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none;"><i
+                                class="fab fa-facebook-f"></i></a><a href="#"
+                            style="background: #1a1a1a; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none;"><i
+                                class="fab fa-instagram"></i></a><a href="#"
+                            style="background: #1a1a1a; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none;"><i
+                                class="fab fa-twitter"></i></a></div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <h3>📧 Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group"><input type="text" placeholder="Your Name *" required></div>
+                    <div class="form-group"><input type="email" placeholder="Your Email *" required></div>
+                    <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
+                    <div class="form-group"><select>
+                            <option>Select Event Type</option>
+                            <option>Birthday Party</option>
+                            <option>Wedding Anniversary</option>
+                            <option>Baby Shower</option>
+                            <option>Graduation Party</option>
+                            <option>Corporate Event</option>
+                            <option>Festival Celebration</option>
+                        </select></div>
+                    <div class="form-group"><textarea rows="4" placeholder="Your Message..."></textarea></div>
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Send
+                        Message <i class="fas fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
-        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
-        <ul class="nav-menu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="events.html" class="nav-link">Events</a></li>
-            <li><a href="packages.html" class="nav-link">Packages</a></li>
-            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-            <li><a href="contact.html" class="nav-link active">Contact</a></li>
-            <li><a href="#" class="nav-link login-trigger">Login/SignUp</a></li>
-        </ul>
-    </div>
-</nav>
+        <div class="map reveal">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.3241669525625!2d80.288625!3d26.472426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c3a8b4c3e5a5f%3A0x5c2a5a5a5a5a5a5a!2sVikas%20Nagar%2C%20Kanpur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
 
-<section class="page-header">
-    <div class="container">
-        <h1>Get In <span>Touch</span></h1>
-        <p>We'd love to hear from you. Let's plan your celebration!</p>
-    </div>
-</section>
+    <!-- ========== SIMPLE PROFESSIONAL FOOTER - NO PAYMENT / NO NEWSLETTER ========== -->
+    <footer style="background: #0a0a0a; border-top: 2px solid #d4af37; padding: 3rem 2rem 1.5rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
 
-<section class="contact-page">
-    <div class="container">
-        <div class="contact-grid-gold">
-            <!-- Contact Info -->
-            <div class="contact-info-card-gold">
-                <h3>Contact <span class="gold">Information</span></h3>
-                
-                <div class="contact-detail-gold">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div><strong>Address</strong> 446, Vikas Nagar, Lakhanpur Housing Society, Khyora, Kanpur, Uttar Pradesh 208002</div>
+            <!-- Main Footer Grid - 4 Columns (Without Payment & Newsletter) -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+
+                <!-- Column 1: Brand Info -->
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">
+                        A4<span style="color: #d4af37;">Celebration</span>
+                    </h3>
+                    <p style="color: #aaaaaa; margin-bottom: 0.8rem; line-height: 1.5;">The Best Event Agency in Kanpur
+                    </p>
+                    <p style="color: #888888; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                        We create unforgettable moments with elegance, creativity, and flawless execution.
+                    </p>
+                    <!-- Social Icons -->
+                    <div style="display: flex; gap: 0.8rem;">
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <div class="contact-detail-gold">
-                    <i class="fas fa-phone-alt"></i>
-                    <div><strong>Phone</strong> <a href="tel:8858185433" style="color: var(--gold);">8858185433</a><br><a href="tel:8750200811" style="color: var(--gold);">8750200811</a></div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Quick Links
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
+                                Home</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#services"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                                Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
+                                About Us</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
+                                Event Gallery</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
+                                Testimonials</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
+                                Contact Us</a></li>
+                    </ul>
                 </div>
-                <div class="contact-detail-gold">
-                    <i class="fab fa-whatsapp"></i>
-                    <div><strong>WhatsApp</strong> <a href="https://wa.me/918858185433" style="color: var(--gold);">8858185433</a></div>
+
+                <!-- Column 3: Contact Info -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Contact Info
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.9rem; display: flex; align-items: flex-start; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-map-marker-alt" style="color: #d4af37; margin-top: 3px;"></i>
+                            446, Vikas Nagar, Lakhanpur, Kanpur
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8858185433
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8750200811
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-envelope" style="color: #d4af37;"></i>
+                            info@a4celebration.com
+                        </li>
+                    </ul>
                 </div>
-                <div class="contact-detail-gold">
-                    <i class="fas fa-envelope"></i>
-                    <div><strong>Email</strong> info@a4celebration.com</div>
-                </div>
-                
-                <div class="business-hours">
-                    <i class="fas fa-clock" style="color: var(--gold); font-size: 24px;"></i>
-                    <h4 style="margin: 10px 0;">Business Hours</h4>
-                    <p>Open Daily • Closes 8 pm</p>
-                    <p style="font-size: 0.8rem; color: var(--gray);">Monday - Sunday: 10:00 AM - 8:00 PM</p>
+
+                <!-- Column 4: Working Hours & Location Badge -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Working Hours
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Monday - Friday:</span> <span style="color: #d4af37;">10:00 AM - 8:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Saturday:</span> <span style="color: #d4af37;">10:00 AM - 6:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Sunday:</span> <span style="color: #d4af37;">By Appointment</span>
+                        </li>
+                    </ul>
+
+                    <!-- Rating Badge (Extra touch) -->
+                    <div
+                        style="margin-top: 1.2rem; background: #111; padding: 0.8rem; border-radius: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.2);">
+                        <div style="color: #d4af37; font-size: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <div style="color: #aaaaaa; font-size: 0.75rem; margin-top: 0.3rem;">Google Rating 5.0 ★</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="contact-form-card-gold">
-                <h3>Send Us a <span class="gold">Message</span></h3>
-                <form id="contactForm">
-                    <div class="form-group-gold"><input type="text" placeholder="Your Full Name *" required></div>
-                    <div class="form-group-gold"><input type="tel" placeholder="Phone Number *" required></div>
-                    <div class="form-group-gold"><input type="email" placeholder="Email Address"></
+            <!-- Bottom Copyright Bar -->
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
+                <div style="color: #888888; font-size: 0.75rem;">
+                    © 2025 A4 Celebration — All Rights Reserved.
+                </div>
+                <div style="color: #666; font-size: 0.7rem;">
+                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                </div>
+                <div style="color: #555; font-size: 0.7rem;">
+                    <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
+                        style="color: #777; text-decoration: none;">Terms & Conditions</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <style>
+        /* Hover Effects for Footer */
+        footer a:hover {
+            color: #d4af37 !important;
+            padding-left: 5px;
+        }
+
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+            background: #d4af37;
+            color: #000 !important;
+        }
+
+        /* Smooth transition for all links */
+        footer a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+    </style>
+    <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').classList.add('fade-out');
+            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+            window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
+            document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+            document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you! We will get back to you soon.'); });
+        });
+    </script>
+</body>
+
+</html>

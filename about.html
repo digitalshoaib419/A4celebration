@@ -1,206 +1,874 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Celebrate Moments</title>
-    <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>A4 Celebration | About Us - Premium Event Agency Kanpur</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --gold: #c9a03d;
+            --gold-light: #d4b04c;
+            --gold-dark: #a07d2e;
+        }
+
+        .gold {
+            color: var(--gold);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-ring {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(201, 160, 61, 0.2);
+            border-top: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 160, 61, 0.2);
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 2rem;
+            background: #0a0a0a;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+        }
+
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            color: #999;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: #0a0a0a;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            margin-top: 65px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background: #0e0e0e;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-sub {
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            margin-top: 0.5rem;
+        }
+
+        /* About Story */
+        .about-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .story-text p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 160, 61, 0.3);
+        }
+
+        /* Mission Vision */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            background: #121212;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(201, 160, 61, 0.15);
+            transition: 0.3s;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 160, 61, 0.4);
+        }
+
+        .mv-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mv-card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: #121212;
+            padding: 1.8rem;
+            border-radius: 20px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .why-card i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .why-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .why-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: #121212;
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid rgba(201, 160, 61, 0.15);
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 160, 61, 0.4);
+        }
+
+        .team-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info p {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info small {
+            color: #777;
+            font-size: 0.8rem;
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: linear-gradient(95deg, #0a0a0a, #111);
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            border-top: 2px solid #d4af37;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            z-index: 99;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .nav-menu {
+                position: fixed;
+                top: 65px;
+                left: -100%;
+                flex-direction: column;
+                background: #0a0a0a;
+                width: 70%;
+                height: 100vh;
+                padding: 2rem;
+                transition: 0.3s;
+                border-right: 2px solid var(--gold);
+                gap: 1.2rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .about-story {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- ========== NAVIGATION ========== -->
-<nav class="navbar">
-    <div class="container">
-        <a href="../index.html" class="logo">
-            <i class="fas fa-glass-cheers"></i>
-            <span>Celebrate<span class="highlight">Moments</span></span>
-        </a>
-        <div class="nav-toggle">
-            <i class="fas fa-bars"></i>
+    <div class="preloader" id="preloader">
+        <div>
+            <div class="preloader-ring"></div>
+            <div style="color:var(--gold);">A4</div>
         </div>
-        <ul class="nav-menu">
-            <li><a href="../index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link active">About</a></li>
-            <li><a href="services.html" class="nav-link">Services</a></li>
-            <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-            <li><a href="packages.html" class="nav-link">Packages</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><a href="contact.html" class="btn-nav">Book Now</a></li>
-        </ul>
     </div>
-</nav>
 
-<!-- ========== PAGE HEADER ========== -->
-<section class="page-header">
-    <div class="container">
-        <span class="subtitle">Who We Are</span>
-        <h1>About <span class="highlight">Celebrate Moments</span></h1>
-        <p>Making every celebration special since 2015</p>
-    </div>
-</section>
-
-<!-- ========== OUR STORY ========== -->
-<section class="about-story">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Our Team">
-                <div class="experience-badge">
-                    <span>10+</span>
-                    <p>Years of<br>Excellence</p>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <div>
+                    <div class="logo-name">A4<span class="gold">Celebration</span></div>
+                    <div class="logo-tag">The Best Event Agency</div>
                 </div>
             </div>
-            <div class="about-content">
-                <h2>Our <span class="highlight">Story</span></h2>
-                <p>Celebrate Moments was founded in 2015 with a simple vision - to make every celebration unforgettable. What started as a small team of passionate event planners has now grown into one of the most trusted event management companies.</p>
-                <p>Over the years, we've had the privilege of organizing over 500+ successful events, from intimate birthday parties to grand corporate galas. Our secret? We treat every event as if it were our own.</p>
-                <div class="features-list">
-                    <div><i class="fas fa-check-circle"></i> 500+ Events Completed</div>
-                    <div><i class="fas fa-check-circle"></i> 1000+ Happy Clients</div>
-                    <div><i class="fas fa-check-circle"></i> 50+ Team Members</div>
-                    <div><i class="fas fa-check-circle"></i> 10+ Years Experience</div>
-                </div>
-                <a href="contact.html" class="btn-primary">Plan Your Event</a>
+            <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="navMenu">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="events.html" class="nav-link">Events</a></li>
+                    <li><a href="packages.html" class="nav-link">Packages</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Book Now</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>About <span class="gold">Us</span></h1>
+        <div class="gold-line"></div>
+        <p style="max-width: 600px; margin: 1rem auto;">Discover the story behind A4 Celebration - Kanpur's most trusted
+            event agency</p>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section">
+        <div class="about-story">
+            <div class="story-text reveal">
+                <div class="section-sub" style="text-align: left;">Our Journey</div>
+                <h2 style="font-size: 2rem; font-family: 'Playfair Display', serif; margin-bottom: 1rem;">The <span
+                        class="gold">A4 Celebration</span> Story</h2>
+                <p>Founded in 2015, A4 Celebration began with a simple yet powerful vision - to transform ordinary
+                    occasions into extraordinary memories. What started as a small team of passionate event planners in
+                    Vikas Nagar, Kanpur, has now grown into one of the most trusted event management companies in the
+                    region.</p>
+                <p>The name "A4" symbolizes our commitment to delivering <strong>Attention, Affection, Assurance, and
+                        Appreciation</strong> in every event we handle. We believe that every celebration deserves the
+                    Midas touch - a perfect blend of creativity, precision, and heartfelt service.</p>
+                <p>Over the past 10+ years, we have successfully executed over 680+ events ranging from intimate family
+                    gatherings to grand weddings, corporate galas, and festive celebrations. Our team of experienced
+                    designers, decor specialists, and coordinators work tirelessly to bring your vision to life.</p>
+                <p>Today, A4 Celebration stands as a symbol of excellence in event management, known for our signature
+                    black and gold aesthetics, attention to detail, and commitment to making every moment truly
+                    unforgettable.</p>
+                <a href="contact.html" class="btn-primary" style="margin-top: 1rem;">Plan Your Event →</a>
+            </div>
+            <div class="story-image reveal">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="A4 Celebration Team">
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ========== OUR MISSION ========== -->
-<section class="mission">
-    <div class="container">
-        <div class="mission-grid">
-            <div class="mission-card">
-                <i class="fas fa-bullseye"></i>
-                <h3>Our Mission</h3>
-                <p>To create magical moments that bring people together and create lasting memories through exceptional event planning and execution.</p>
-            </div>
-            <div class="mission-card">
-                <i class="fas fa-eye"></i>
-                <h3>Our Vision</h3>
-                <p>To become the most loved and trusted celebration partner, known for creativity, reliability, and excellence in every event.</p>
-            </div>
-            <div class="mission-card">
-                <i class="fas fa-heart"></i>
-                <h3>Our Values</h3>
-                <p>Integrity, creativity, attention to detail, and putting our clients' happiness at the center of everything we do.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ========== TEAM SECTION ========== -->
-<section class="team">
-    <div class="container">
+    <!-- Mission & Vision -->
+    <section class="section section-dark">
         <div class="section-header">
-            <span class="subtitle">Our Creative Team</span>
-            <h2>Meet Our <span class="highlight">Experts</span></h2>
-            <p>The passionate people behind your perfect celebration</p>
+            <div class="section-sub">Our Core Values</div>
+            <h2 class="section-title">Mission & <span class="gold">Vision</span></h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="mv-grid">
+            <div class="mv-card reveal">
+                <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To create unforgettable experiences that exceed expectations by delivering creative, flawless, and
+                    stress-free event solutions with a golden touch of elegance.</p>
+            </div>
+            <div class="mv-card reveal">
+                <div class="mv-icon"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>To become India's most preferred premium event agency, known for transforming celebrations into
+                    timeless masterpieces.</p>
+            </div>
+            <div class="mv-card reveal">
+                <div class="mv-icon"><i class="fas fa-heart"></i></div>
+                <h3>Our Promise</h3>
+                <p>100% client satisfaction, transparent pricing, creative excellence, and flawless execution from start
+                    to finish.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-sub">Why Choose A4 Celebration</div>
+            <h2 class="section-title">What Makes <span class="gold">Us Different</span></h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal"><i class="fas fa-palette"></i>
+                <h4>Creative Excellence</h4>
+                <p>Unique themes, stunning decor, and innovative concepts that make your event stand out.</p>
+            </div>
+            <div class="why-card reveal"><i class="fas fa-clock"></i>
+                <h4>Stress-Free Planning</h4>
+                <p>We handle everything - from venue selection to guest management - so you can enjoy your celebration.
+                </p>
+            </div>
+            <div class="why-card reveal"><i class="fas fa-gem"></i>
+                <h4>Premium Quality</h4>
+                <p>Only the best vendors, materials, and entertainment partners for that royal experience.</p>
+            </div>
+            <div class="why-card reveal"><i class="fas fa-hand-holding-usd"></i>
+                <h4>Transparent Pricing</h4>
+                <p>No hidden costs. Clear, competitive pricing with customized packages for every budget.</p>
+            </div>
+            <div class="why-card reveal"><i class="fas fa-headset"></i>
+                <h4>24/7 Support</h4>
+                <p>Round-the-clock coordination and on-ground support during your event.</p>
+            </div>
+            <div class="why-card reveal"><i class="fas fa-smile"></i>
+                <h4>100% Satisfaction</h4>
+                <p>Proven track record with 1250+ happy clients and 5-star Google rating.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <div class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-box reveal">
+                <div class="stat-number" data-count="2015">0</div>
+                <p>Year Established</p>
+            </div>
+            <div class="stat-box reveal">
+                <div class="stat-number" data-count="680">0</div>
+                <p>Events Completed</p>
+            </div>
+            <div class="stat-box reveal">
+                <div class="stat-number" data-count="1250">0</div>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-box reveal">
+                <div class="stat-number" data-count="10">0</div>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Team -->
+    <section class="section section-dark">
+        <div class="section-header">
+            <div class="section-sub">Meet Our Team</div>
+            <h2 class="section-title">The Faces Behind <span class="gold">Your Celebrations</span></h2>
+            <div class="gold-line"></div>
+            <p style="color: #aaa; max-width: 600px; margin: 1rem auto;">Passionate creators, dedicated planners, and
+                execution experts.</p>
         </div>
         <div class="team-grid">
-            <div class="team-card">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member">
-                <h4>Priya Sharma</h4>
-                <p>Creative Director</p>
-                <div class="team-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="team-card reveal"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Founder"
+                    class="team-img">
+                <div class="team-info">
+                    <h4>Rajesh Sharma</h4>
+                    <p>Founder & Creative Director</p><small>10+ years experience in luxury events</small>
                 </div>
             </div>
-            <div class="team-card">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member">
-                <h4>Rajesh Kumar</h4>
-                <p>Event Coordinator</p>
-                <div class="team-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="team-card reveal"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Event Head"
+                    class="team-img">
+                <div class="team-info">
+                    <h4>Neha Verma</h4>
+                    <p>Head of Operations</p><small>Expert in wedding & corporate events</small>
                 </div>
             </div>
-            <div class="team-card">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
-                <h4>Neha Verma</h4>
-                <p>Decor Specialist</p>
-                <div class="team-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="team-card reveal"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Design Head"
+                    class="team-img">
+                <div class="team-info">
+                    <h4>Ankit Singh</h4>
+                    <p>Design & Decor Specialist</p><small>Creative visionary</small>
                 </div>
             </div>
-            <div class="team-card">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Team Member">
-                <h4>Ankit Mehta</h4>
-                <p>Photography Head</p>
-                <div class="team-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="team-card reveal"><img src="https://randomuser.me/api/portraits/women/33.jpg"
+                    alt="Client Relations" class="team-img">
+                <div class="team-info">
+                    <h4>Priya Gupta</h4>
+                    <p>Client Relations Manager</p><small>Ensuring seamless client experience</small>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ========== CTA SECTION ========== -->
-<section class="cta">
-    <div class="container">
-        <div class="cta-content">
-            <h2>Ready to <span class="highlight">Celebrate</span> With Us?</h2>
-            <p>Let's create unforgettable memories together. Contact us today!</p>
-            <a href="contact.html" class="btn-primary">Get a Free Quote</a>
-        </div>
-    </div>
-</section>
+    <!-- Footer -->
+    <!-- ========== SIMPLE PROFESSIONAL FOOTER - NO PAYMENT / NO NEWSLETTER ========== -->
+    <footer style="background: #0a0a0a; border-top: 2px solid #d4af37; padding: 3rem 2rem 1.5rem;">
+        <div style="max-width: 1400px; margin: 0 auto;">
 
-<!-- ========== FOOTER ========== -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3><i class="fas fa-glass-cheers"></i> Celebrate<span>Moments</span></h3>
-                <p>Making every celebration special since 2015.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+            <!-- Main Footer Grid - 4 Columns (Without Payment & Newsletter) -->
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+
+                <!-- Column 1: Brand Info -->
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">
+                        A4<span style="color: #d4af37;">Celebration</span>
+                    </h3>
+                    <p style="color: #aaaaaa; margin-bottom: 0.8rem; line-height: 1.5;">The Best Event Agency in Kanpur
+                    </p>
+                    <p style="color: #888888; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                        We create unforgettable moments with elegance, creativity, and flawless execution.
+                    </p>
+                    <!-- Social Icons -->
+                    <div style="display: flex; gap: 0.8rem;">
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Quick Links
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
+                                Home</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#services"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                                Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
+                                About Us</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
+                                Event Gallery</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
+                                Testimonials</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
+                                Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Contact Info
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.9rem; display: flex; align-items: flex-start; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-map-marker-alt" style="color: #d4af37; margin-top: 3px;"></i>
+                            446, Vikas Nagar, Lakhanpur, Kanpur
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8858185433
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8750200811
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-envelope" style="color: #d4af37;"></i>
+                            info@a4celebration.com
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Working Hours & Location Badge -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Working Hours
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Monday - Friday:</span> <span style="color: #d4af37;">10:00 AM - 8:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Saturday:</span> <span style="color: #d4af37;">10:00 AM - 6:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Sunday:</span> <span style="color: #d4af37;">By Appointment</span>
+                        </li>
+                    </ul>
+
+                    <!-- Rating Badge (Extra touch) -->
+                    <div
+                        style="margin-top: 1.2rem; background: #111; padding: 0.8rem; border-radius: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.2);">
+                        <div style="color: #d4af37; font-size: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <div style="color: #aaaaaa; font-size: 0.75rem; margin-top: 0.3rem;">Google Rating 5.0 ★</div>
+                    </div>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Our Services</h4>
-                <ul>
-                    <li>Birthday Parties</li>
-                    <li>Wedding Anniversaries</li>
-                    <li>Baby Showers</li>
-                    <li>Corporate Events</li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
-                    <li><i class="fas fa-phone-alt"></i> +91 98765 43210</li>
-                    <li><i class="fas fa-envelope"></i> info@celebratemoments.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Celebrate Moments. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
 
-<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+            <!-- Bottom Copyright Bar -->
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
+                <div style="color: #888888; font-size: 0.75rem;">
+                    © 2025 A4 Celebration — All Rights Reserved.
+                </div>
+                <div style="color: #666; font-size: 0.7rem;">
+                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                </div>
+                <div style="color: #555; font-size: 0.7rem;">
+                    <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
+                        style="color: #777; text-decoration: none;">Terms & Conditions</a>
+                </div>
+            </div>
 
-<script src="../script.js"></script>
+        </div>
+    </footer>
+
+    <style>
+        /* Hover Effects for Footer */
+        footer a:hover {
+            color: #d4af37 !important;
+            padding-left: 5px;
+        }
+
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+            background: #d4af37;
+            color: #000 !important;
+        }
+
+        /* Smooth transition for all links */
+        footer a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+    </style>
+
+    <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').classList.add('fade-out');
+            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+
+            // Counter Animation
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-count'));
+                if (isNaN(target)) return;
+                let current = 0;
+                const step = target / 45;
+                const update = () => {
+                    if (current < target) {
+                        current += step;
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                update();
+            });
+
+            // Scroll Reveal
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            reveals.forEach(el => observer.observe(el));
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Mobile menu toggle
+            document.getElementById('navToggle').addEventListener('click', () => {
+                document.getElementById('navMenu').classList.toggle('active');
+            });
+        });
+    </script>
 </body>
+
 </html>
