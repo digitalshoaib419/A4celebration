@@ -58,6 +58,10 @@
 
         .preloader-box {
             text-align: center;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+
         }
 
         .preloader-ring {
@@ -78,6 +82,7 @@
 
         .preloader-text {
             font-family: 'Playfair Display', serif;
+            text-align: center;
             font-size: 1.2rem;
             letter-spacing: 4px;
             color: var(--gold);
@@ -449,8 +454,50 @@
             transition: 0.3s;
         }
 
+        /* .gallery-slider .swiper-slide img:hover {
+            transform: scale(1.02);
+        } */
+
+        .gallery-slider .swiper-slide {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-slider .swiper-slide img {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-slider .swiper-slide p.event-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+            opacity: 0;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .gallery-slider .swiper-slide:hover img {
+            filter: brightness(60%);
+        }
+
+        .gallery-slider .swiper-slide:hover p.event-text {
+            opacity: 1;
+        }
+
+
+
+
+        /* ================================================================ */
+
         .gallery-slider .swiper-slide img:hover {
             transform: scale(1.02);
+            filter: brightness(60%);
         }
 
         /* Reviews Marquee */
@@ -631,11 +678,12 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <!-- <img src="assets/logo.jpeg" alt="Logo" class="logo-img" -->
-                <a href="/">
-                    <img src="logo.png" alt="Company Logo">
+                <a href="index.html">
+                    <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                        onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
                 </a>
-                onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <!-- <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'"> -->
                 <div>
                     <div class="logo-name">A4<span class="gold">Celebration</span></div>
                     <div class="logo-tag">The Best Event Agency</div>
@@ -671,7 +719,10 @@
                 Premium event management with a golden touch.</p>
             <div class="btn-group">
                 <a href="#" class="btn-primary">Book Your Event <i class="fas fa-arrow-right"></i></a>
-                <a href="#" class="btn-outline">Contact Us <i class="fas fa-headset"></i></a>
+                <a href="/contact.html" class="btn-outline">
+                    Contact Us <i class="fas fa-headset"></i>
+                </a>
+                <!-- <a href="#" class="btn-outline">Contact Us <i class="fas fa-headset"></i></a> -->
             </div>
             <div class="hero-stats">
                 <div class="stat-item">
@@ -810,16 +861,31 @@
         </div>
         <div class="swiper gallery-slider" style="max-width:1300px; margin:0 auto; overflow:hidden;">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600"
-                        alt="Decor"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1464366400600-7168b5af510e?w=600"
-                        alt="Birthday"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600"
-                        alt="Wedding"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600"
-                        alt="Corporate"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=600"
-                        alt="Festival"></div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Decor">
+
+                    <p class="event-text">Event_Decoration</p>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="assets/happy birthday.webp" alt="Birthday">
+                    <p class="event-text">Birthday_Party</p>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" alt="Wedding">
+                    <p class="event-text">Wedding_Ceremony</p>
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600" alt="Corporate">
+                    <p class="event-text">Corporate_Event</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="assets/Festivel.webp" alt="Festival">
+                    <p class="event-text">Festival_Celebration</p>
+                </div>
+                
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -915,22 +981,25 @@
                         Quick Links
                     </h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                        <li style="margin-bottom: 0.7rem;"><a href="index.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
                                 Home</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#services"
-                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
-                                Our Services</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                        <li style="margin-bottom: 0.7rem;"><a href="about.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
                                 About Us</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                        <li style="margin-bottom: 0.7rem;"><a href="services.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                                Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="packages.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📦
+                                Packages</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="gallery.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
                                 Event Gallery</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                        <li style="margin-bottom: 0.7rem;"><a href="testimonials.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
                                 Testimonials</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                        <li style="margin-bottom: 0.7rem;"><a href="contact.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
                                 Contact Us</a></li>
                     </ul>
@@ -1000,10 +1069,10 @@
             <div
                 style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
                 <div style="color: #888888; font-size: 0.75rem;">
-                    © 2025 A4 Celebration — All Rights Reserved.
+                    © 2026 A4 Celebration — All Rights Reserved.
                 </div>
                 <div style="color: #666; font-size: 0.7rem;">
-                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                    Crafting Memories in Kanpur with A4 Celebration <i class="fas fa-heart" style="color: #d4af37;"></i>
                 </div>
                 <div style="color: #555; font-size: 0.7rem;">
                     <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"

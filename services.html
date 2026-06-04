@@ -420,41 +420,54 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .preloader-text {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
     </style>
 </head>
 
 <body>
 
     <div class="preloader" id="preloader">
-        <div>
+        <div class="preloader-box">
             <div class="preloader-ring"></div>
-            <div style="color:var(--gold);">A4</div>
+            <div class="preloader-text">A4</div>
         </div>
     </div>
 
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
-                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <a href="index.html">
+                    <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                        onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                </a>
+                <!-- <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'"> -->
                 <div>
                     <div class="logo-name">A4<span class="gold">Celebration</span></div>
                     <div class="logo-tag">The Best Event Agency</div>
                 </div>
             </div>
             <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
-            
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
-                    <li><a href="packages.html" class="nav-link">Packages</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;" class="btn-primary">Book Now</a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
+                <li><a href="packages.html" class="nav-link">Packages</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;"
+                class="btn-primary">Book Now</a>
         </div>
     </nav>
 
@@ -472,7 +485,7 @@
 
             <!-- Service 1: Birthday Parties -->
             <div class="service-main-card reveal">
-                <img src="https://images.unsplash.com/photo-1464366400600-7168b5af510e?w=600" alt="Birthday Party"
+                <img src="assets/Garden Birthday Decoration Ideas _ Outdoor Party Setup.webp" alt="Birthday Party"
                     class="service-img">
                 <div class="service-content">
                     <div class="service-icon-large"><i class="fas fa-birthday-cake"></i></div>
@@ -539,7 +552,7 @@
 
             <!-- Service 4: Graduation Party -->
             <div class="service-main-card reveal">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600" alt="Graduation Party"
+                <img src="assets/fsu graduation photos🎓.webp" alt="Graduation Party"
                     class="service-img">
                 <div class="service-content">
                     <div class="service-icon-large"><i class="fas fa-graduation-cap"></i></div>
@@ -582,7 +595,7 @@
 
             <!-- Service 6: Festival Celebrations -->
             <div class="service-main-card reveal">
-                <img src="https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=600" alt="Festival Celebration"
+                <img src="assets/college fest.webp" alt="Festival Celebration"
                     class="service-img">
                 <div class="service-content">
                     <div class="service-icon-large"><i class="fas fa-tree"></i></div>
@@ -633,11 +646,6 @@
                 <h4>Execution</h4>
                 <p>Flawless on-ground coordination on the event day.</p>
             </div>
-            <div class="process-step reveal">
-                <div class="step-number">5</div>
-                <h4>Follow Up</h4>
-                <p>Post-event feedback and assistance for future celebrations.</p>
-            </div>
         </div>
     </section>
 
@@ -683,82 +691,219 @@
     <!-- Footer -->
     <footer style="background: #0a0a0a; border-top: 2px solid #d4af37; padding: 3rem 2rem 1.5rem;">
         <div style="max-width: 1400px; margin: 0 auto;">
+
+            <!-- Main Footer Grid - 4 Columns (Without Payment & Newsletter) -->
             <div
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+
+                <!-- Column 1: Brand Info -->
                 <div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem;">A4<span
-                            style="color: #d4af37;">Celebration</span></h3>
-                    <p style="color: #aaaaaa;">The Best Event Agency in Kanpur</p>
-                    <div style="display: flex; gap: 0.8rem; margin-top: 1rem;"><a href="#"
-                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; text-decoration: none;"><i
-                                class="fab fa-facebook-f"></i></a><a href="#"
-                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; text-decoration: none;"><i
-                                class="fab fa-instagram"></i></a><a href="#"
-                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; text-decoration: none;"><i
-                                class="fab fa-youtube"></i></a></div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 0.5rem;">
+                        A4<span style="color: #d4af37;">Celebration</span>
+                    </h3>
+                    <p style="color: #aaaaaa; margin-bottom: 0.8rem; line-height: 1.5;">The Best Event Agency in Kanpur
+                    </p>
+                    <p style="color: #888888; font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                        We create unforgettable moments with elegance, creativity, and flawless execution.
+                    </p>
+                    <!-- Social Icons -->
+                    <div style="display: flex; gap: 0.8rem;">
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: #1a1a1a; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; transition: all 0.3s; text-decoration: none; font-size: 0.9rem;"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
+
+                <!-- Column 2: Quick Links -->
                 <div>
-                    <h4 style="color: #d4af37;">Quick Links</h4>
-                    <ul style="list-style: none; margin-top: 0.8rem;">
-                        <li><a href="index.html" style="color: #ccc; text-decoration: none;">Home</a></li>
-                        <li><a href="about.html" style="color: #ccc; text-decoration: none;">About Us</a></li>
-                        <li><a href="services.html" style="color: #ccc; text-decoration: none;">Services</a></li>
-                        <li><a href="events.html" style="color: #ccc; text-decoration: none;">Events</a></li>
-                        <li><a href="packages.html" style="color: #ccc; text-decoration: none;">Packages</a></li>
-                        <li><a href="gallery.html" style="color: #ccc; text-decoration: none;">Gallery</a></li>
-                        <li><a href="testimonials.html" style="color: #ccc; text-decoration: none;">Testimonials</a>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Quick Links
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.7rem;"><a href="index.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
+                                Home</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="about.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
+                                About Us</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="services.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                              Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="packages.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📦
+                                Packages</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="gallery.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
+                                Event Gallery</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="testimonials.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
+                                Testimonials</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="contact.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
+                                Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact Info -->
+                <div>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Contact Info
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.9rem; display: flex; align-items: flex-start; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-map-marker-alt" style="color: #d4af37; margin-top: 3px;"></i>
+                            446, Vikas Nagar, Lakhanpur, Kanpur
                         </li>
-                        <li><a href="contact.html" style="color: #ccc; text-decoration: none;">Contact</a></li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8858185433
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-phone-alt" style="color: #d4af37;"></i>
+                            +91 8750200811
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; align-items: center; gap: 10px; color: #cccccc; font-size: 0.85rem;">
+                            <i class="fas fa-envelope" style="color: #d4af37;"></i>
+                            info@a4celebration.com
+                        </li>
                     </ul>
                 </div>
+
+                <!-- Column 4: Working Hours & Location Badge -->
                 <div>
-                    <h4 style="color: #d4af37;">Contact Info</h4>
-                    <ul style="list-style: none; margin-top: 0.8rem;">
-                        <li><i class="fas fa-map-marker-alt" style="color: #d4af37;"></i> 446, Vikas Nagar, Lakhanpur,
-                            Kanpur</li>
-                        <li><i class="fas fa-phone-alt" style="color: #d4af37;"></i> +91 8858185433</li>
-                        <li><i class="fas fa-phone-alt" style="color: #d4af37;"></i> +91 8750200811</li>
-                        <li><i class="fas fa-envelope" style="color: #d4af37;"></i> info@a4celebration.com</li>
+                    <h4
+                        style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid #d4af37; padding-left: 12px;">
+                        Working Hours
+                    </h4>
+                    <ul style="list-style: none;">
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Monday - Friday:</span> <span style="color: #d4af37;">10:00 AM - 8:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Saturday:</span> <span style="color: #d4af37;">10:00 AM - 6:00 PM</span>
+                        </li>
+                        <li
+                            style="margin-bottom: 0.7rem; display: flex; justify-content: space-between; color: #cccccc; font-size: 0.85rem;">
+                            <span>Sunday:</span> <span style="color: #d4af37;">By Appointment</span>
+                        </li>
                     </ul>
-                </div>
-                <div>
-                    <h4 style="color: #d4af37;">Working Hours</h4>
-                    <ul style="list-style: none; margin-top: 0.8rem;">
-                        <li>Monday - Friday: 10AM - 8PM</li>
-                        <li>Saturday: 10AM - 6PM</li>
-                        <li>Sunday: By Appointment</li>
-                    </ul>
+
+                    <!-- Rating Badge (Extra touch) -->
+                    <div
+                        style="margin-top: 1.2rem; background: #111; padding: 0.8rem; border-radius: 12px; text-align: center; border: 1px solid rgba(212,175,55,0.2);">
+                        <div style="color: #d4af37; font-size: 1rem;">⭐⭐⭐⭐⭐</div>
+                        <div style="color: #aaaaaa; font-size: 0.75rem; margin-top: 0.3rem;">Google Rating 5.0 ★</div>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: center; padding-top: 1rem; border-top: 1px solid #1a1a1a; color: #888;">© 2025 A4
-                Celebration — Crafting Memories with Gold in Kanpur</div>
+
+            <!-- Bottom Copyright Bar -->
+            <div
+                style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
+                <div style="color: #888888; font-size: 0.75rem;">
+                    © 2026 A4 Celebration — All Rights Reserved.
+                </div>
+                <div style="color: #666; font-size: 0.7rem;">
+                    Crafting Memories in Kanpur with A4 Celebration <i class="fas fa-heart" style="color: #d4af37;"></i>
+                </div>
+                <div style="color: #555; font-size: 0.7rem;">
+                    <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
+                        style="color: #777; text-decoration: none;">Terms & Conditions</a>
+                </div>
+            </div>
+
         </div>
     </footer>
 
+    <style>
+        /* Hover Effects for Footer */
+        footer a:hover {
+            color: #d4af37 !important;
+            padding-left: 5px;
+        }
+
+        footer .social-links a:hover {
+            transform: translateY(-3px);
+            background: #d4af37;
+            color: #000 !important;
+        }
+
+        /* Smooth transition for all links */
+        footer a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+    </style>
+
     <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         window.addEventListener('load', () => {
-            document.getElementById('preloader').classList.add('fade-out');
-            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.style.display = 'none', 600); }, 800);
 
-            // Scroll Reveal
+            // Counters
+            const counters = document.querySelectorAll('.stat-num, .counter-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-count'));
+                if (isNaN(target)) return;
+                let current = 0;
+                const step = target / 45;
+                const update = () => {
+                    if (current < target) {
+                        current += step;
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target; }
+                };
+                update();
+            });
+
+            // Scroll reveal
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('active');
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
             }, { threshold: 0.1 });
             reveals.forEach(el => observer.observe(el));
 
-            // Navbar scroll effect
+            // Navbar scroll
             window.addEventListener('scroll', () => {
                 document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
             });
 
-            // Mobile menu toggle
+            // Mobile menu
             document.getElementById('navToggle').addEventListener('click', () => {
                 document.getElementById('navMenu').classList.toggle('active');
+            });
+
+            // Scroll down
+            document.querySelector('.scroll-down')?.addEventListener('click', () => {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            });
+
+            // Swiper
+            new Swiper('.gallery-slider', {
+                loop: true, slidesPerView: 1, spaceBetween: 20, autoplay: { delay: 2800 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
             });
         });
     </script>

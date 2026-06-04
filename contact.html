@@ -327,41 +327,53 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .preloader-text {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
+        
     </style>
 </head>
 
 <body>
 
     <div class="preloader" id="preloader">
-        <div>
+        <div class="preloader-box">
             <div class="preloader-ring"></div>
-            <div style="color:var(--gold);">A4</div>
+            <div class="preloader-text">A4</div>
         </div>
     </div>
 
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
-                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <a href="index.html">
+                    <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                        onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                </a>
+                <!-- <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'"> -->
                 <div>
                     <div class="logo-name">A4<span class="gold">Celebration</span></div>
                     <div class="logo-tag">The Best Event Agency</div>
                 </div>
             </div>
             <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
-            
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
-                    <li><a href="packages.html" class="nav-link">Packages</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;">Book Now</a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
+                <li><a href="packages.html" class="nav-link">Packages</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;">Book Now</a>
         </div>
     </nav>
 
@@ -403,10 +415,11 @@
             <div class="contact-form reveal">
                 <h3>📧 Send Us a Message</h3>
                 <form id="contactForm">
-                    <div class="form-group"><input type="text" placeholder="Your Name *" required></div>
-                    <div class="form-group"><input type="email" placeholder="Your Email *" required></div>
-                    <div class="form-group"><input type="tel" placeholder="Phone Number"></div>
-                    <div class="form-group"><select>
+                    <div class="form-group"><input type="text" id="name" placeholder="Your Name *" required></div>
+                    <div class="form-group"><input type="email" id="email" placeholder="Your Email *" required></div>
+                    <div class="form-group"><input type="tel" id="phone" placeholder="Phone Number"></div>
+                    <div class="form-group">
+                        <select id="eventType">
                             <option>Select Event Type</option>
                             <option>Birthday Party</option>
                             <option>Wedding Anniversary</option>
@@ -414,20 +427,53 @@
                             <option>Graduation Party</option>
                             <option>Corporate Event</option>
                             <option>Festival Celebration</option>
-                        </select></div>
-                    <div class="form-group"><textarea rows="4" placeholder="Your Message..."></textarea></div>
-                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Send
-                        Message <i class="fas fa-paper-plane"></i></button>
+                        </select>
+                    </div>
+                    <div class="form-group"><textarea id="message" rows="4" placeholder="Your Message..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer;">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
                 </form>
+                <script>
+                    document.getElementById("contactForm").addEventListener("submit", function (e) {
+                        e.preventDefault();
+
+                        let name = document.getElementById("name").value;
+                        let email = document.getElementById("email").value;
+                        let phone = document.getElementById("phone").value;
+                        let eventType = document.getElementById("eventType").value;
+                        let message = document.getElementById("message").value;
+
+                        let whatsappMessage =
+                            `New Event Inquiry
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Event Type: ${eventType}
+
+Message:
+${message}`;
+
+                        let whatsappURL =
+                            `https://wa.me/918858185433?text=${encodeURIComponent(whatsappMessage)}`;
+
+                        window.open(whatsappURL, "_blank");
+                    });
+                </script>
             </div>
         </div>
         <div class="map reveal">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.3241669525625!2d80.288625!3d26.472426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c3a8b4c3e5a5f%3A0x5c2a5a5a5a5a5a5a!2sVikas%20Nagar%2C%20Kanpur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                allowfullscreen="" loading="lazy"></iframe>
+                src="https://maps.google.com/maps?q=UPSIDA%20Complex%20A-1/4%20Lakhanpur%20Kanpur%20208024&z=17&output=embed"
+                width="100%" height="500" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy">
+            </iframe>
         </div>
     </section>
 
+    <!-- Footer -->
     <!-- ========== SIMPLE PROFESSIONAL FOOTER - NO PAYMENT / NO NEWSLETTER ========== -->
     <footer style="background: #0a0a0a; border-top: 2px solid #d4af37; padding: 3rem 2rem 1.5rem;">
         <div style="max-width: 1400px; margin: 0 auto;">
@@ -470,22 +516,25 @@
                         Quick Links
                     </h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                        <li style="margin-bottom: 0.7rem;"><a href="index.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
                                 Home</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#services"
-                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
-                                Our Services</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                        <li style="margin-bottom: 0.7rem;"><a href="about.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
                                 About Us</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                        <li style="margin-bottom: 0.7rem;"><a href="services.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                                Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="packages.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📦
+                                Packages</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="gallery.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
                                 Event Gallery</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                        <li style="margin-bottom: 0.7rem;"><a href="testimonials.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
                                 Testimonials</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                        <li style="margin-bottom: 0.7rem;"><a href="contact.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
                                 Contact Us</a></li>
                     </ul>
@@ -555,10 +604,10 @@
             <div
                 style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
                 <div style="color: #888888; font-size: 0.75rem;">
-                    © 2025 A4 Celebration — All Rights Reserved.
+                    © 2026 A4 Celebration — All Rights Reserved.
                 </div>
                 <div style="color: #666; font-size: 0.7rem;">
-                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                    Crafting Memories in Kanpur with A4 Celebration <i class="fas fa-heart" style="color: #d4af37;"></i>
                 </div>
                 <div style="color: #555; font-size: 0.7rem;">
                     <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
@@ -588,18 +637,60 @@
             display: inline-block;
         }
     </style>
+
     <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         window.addEventListener('load', () => {
-            document.getElementById('preloader').classList.add('fade-out');
-            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.style.display = 'none', 600); }, 800);
+
+            // Counters
+            const counters = document.querySelectorAll('.stat-num, .counter-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-count'));
+                if (isNaN(target)) return;
+                let current = 0;
+                const step = target / 45;
+                const update = () => {
+                    if (current < target) {
+                        current += step;
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target; }
+                };
+                update();
+            });
+
+            // Scroll reveal
             const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
             reveals.forEach(el => observer.observe(el));
-            window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-            document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
-            document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you! We will get back to you soon.'); });
+
+            // Navbar scroll
+            window.addEventListener('scroll', () => {
+                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Mobile menu
+            document.getElementById('navToggle').addEventListener('click', () => {
+                document.getElementById('navMenu').classList.toggle('active');
+            });
+
+            // Scroll down
+            document.querySelector('.scroll-down')?.addEventListener('click', () => {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            });
+
+            // Swiper
+            new Swiper('.gallery-slider', {
+                loop: true, slidesPerView: 1, spaceBetween: 20, autoplay: { delay: 2800 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            });
         });
     </script>
 </body>

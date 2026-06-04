@@ -317,41 +317,86 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .preloader-text {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
+        
+       .gallery-item{
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item img{
+    transition: 0.3s ease;
+}
+
+.gallery-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.gallery-item:hover img{
+    filter: brightness(60%);
+}
+
+.gallery-item:hover .gallery-text{
+    opacity: 1;
+}
+
     </style>
 </head>
 
 <body>
 
     <div class="preloader" id="preloader">
-        <div>
+        <div class="preloader-box">
             <div class="preloader-ring"></div>
-            <div style="color:var(--gold);">A4</div>
+            <div class="preloader-text">A4</div>
         </div>
     </div>
 
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
-                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                <a href="index.html">
+                    <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                        onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'">
+                </a>
+                <!-- <img src="assets/logo.jpeg" alt="Logo" class="logo-img"
+                    onerror="this.src='https://placehold.co/48x48/c9a03d/black?text=A4'"> -->
                 <div>
                     <div class="logo-name">A4<span class="gold">Celebration</span></div>
                     <div class="logo-tag">The Best Event Agency</div>
                 </div>
             </div>
             <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
-            
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
-                    <li><a href="packages.html" class="nav-link">Packages</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-                <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;">Book Now</a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <!-- <li><a href="events.html" class="nav-link">Events</a></li> -->
+                <li><a href="packages.html" class="nav-link">Packages</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn-primary" style="font-size:0.85rem; padding:8px 20px;">Book Now</a>
         </div>
     </nav>
 
@@ -363,33 +408,50 @@
 
     <section class="section">
         <div class="gallery-grid">
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Wedding Decor"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1464366400600-7168b5af510e?w=600" alt="Birthday Party"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" alt="Anniversary Setup"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600" alt="Baby Shower"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600" alt="Graduation"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600" alt="Corporate Event"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1532712933740-cc58cf63214b?w=600" alt="Festival Celebration"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600" alt="Party Decor"
-                    onclick="openModal(this.src)"></div>
-            <div class="gallery-item reveal"><img
-                    src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600" alt="Stage Decoration"
-                    onclick="openModal(this.src)"></div>
+            <div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Wedding Decor" onclick="openModal(this.src)">
+    <div class="gallery-text">Wedding_Ceremony</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="assets/happy birthday.webp" alt="Birthday Party" onclick="openModal(this.src)">
+    <div class="gallery-text">Birthday_Party</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" alt="Anniversary Setup" onclick="openModal(this.src)">
+    <div class="gallery-text">Anniversary_Celebration</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600" alt="Baby Shower" onclick="openModal(this.src)">
+    <div class="gallery-text">Baby_Shower</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="assets/fsu graduation photos🎓.webp" alt="Graduation" onclick="openModal(this.src)">
+    <div class="gallery-text">Graduation</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600" alt="Corporate Event" onclick="openModal(this.src)">
+    <div class="gallery-text">Corporate_Event</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="assets/college fest.webp" alt="Festival Celebration" onclick="openModal(this.src)">
+    <div class="gallery-text">Festival_Celebration</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600" alt="Party Decor" onclick="openModal(this.src)">
+    <div class="gallery-text">Party_Decor</div>
+</div>
+
+<div class="gallery-item reveal">
+    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600" alt="Stage Decoration" onclick="openModal(this.src)">
+    <div class="gallery-text">Stage_Decoration</div>
+</div>
         </div>
     </section>
 
@@ -438,22 +500,25 @@
                         Quick Links
                     </h4>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.7rem;"><a href="#home"
+                        <li style="margin-bottom: 0.7rem;"><a href="index.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">🏠
                                 Home</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#services"
-                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
-                                Our Services</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#about"
+                        <li style="margin-bottom: 0.7rem;"><a href="about.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📖
                                 About Us</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#gallery"
+                        <li style="margin-bottom: 0.7rem;"><a href="services.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">✨
+                              Our Services</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="packages.html"
+                                style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📦
+                                Packages</a></li>
+                        <li style="margin-bottom: 0.7rem;"><a href="gallery.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📸
                                 Event Gallery</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#testimonials"
+                        <li style="margin-bottom: 0.7rem;"><a href="testimonials.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">⭐
                                 Testimonials</a></li>
-                        <li style="margin-bottom: 0.7rem;"><a href="#contact"
+                        <li style="margin-bottom: 0.7rem;"><a href="contact.html"
                                 style="color: #cccccc; text-decoration: none; transition: 0.3s; font-size: 0.9rem;">📞
                                 Contact Us</a></li>
                     </ul>
@@ -523,10 +588,10 @@
             <div
                 style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding-top: 1.2rem; border-top: 1px solid #1a1a1a; gap: 0.8rem;">
                 <div style="color: #888888; font-size: 0.75rem;">
-                    © 2025 A4 Celebration — All Rights Reserved.
+                    © 2026 A4 Celebration — All Rights Reserved.
                 </div>
                 <div style="color: #666; font-size: 0.7rem;">
-                    Crafting Memories in Kanpur with <i class="fas fa-heart" style="color: #d4af37;"></i>
+                    Crafting Memories in Kanpur with A4 Celebration <i class="fas fa-heart" style="color: #d4af37;"></i>
                 </div>
                 <div style="color: #555; font-size: 0.7rem;">
                     <a href="#" style="color: #777; text-decoration: none;">Privacy Policy</a> | <a href="#"
@@ -556,20 +621,60 @@
             display: inline-block;
         }
     </style>
+
     <a href="https://wa.me/918858185433" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        function openModal(src) { document.getElementById('modalImg').src = src; document.getElementById('imageModal').classList.add('active'); }
-        function closeModal() { document.getElementById('imageModal').classList.remove('active'); }
         window.addEventListener('load', () => {
-            document.getElementById('preloader').classList.add('fade-out');
-            setTimeout(() => document.getElementById('preloader').style.display = 'none', 600);
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.classList.add('fade-out'); setTimeout(() => preloader.style.display = 'none', 600); }, 800);
+
+            // Counters
+            const counters = document.querySelectorAll('.stat-num, .counter-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-count'));
+                if (isNaN(target)) return;
+                let current = 0;
+                const step = target / 45;
+                const update = () => {
+                    if (current < target) {
+                        current += step;
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(update);
+                    } else { counter.innerText = target; }
+                };
+                update();
+            });
+
+            // Scroll reveal
             const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
             reveals.forEach(el => observer.observe(el));
-            window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50));
-            document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
-            document.getElementById('imageModal').addEventListener('click', (e) => { if (e.target === document.getElementById('imageModal')) closeModal(); });
+
+            // Navbar scroll
+            window.addEventListener('scroll', () => {
+                document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // Mobile menu
+            document.getElementById('navToggle').addEventListener('click', () => {
+                document.getElementById('navMenu').classList.toggle('active');
+            });
+
+            // Scroll down
+            document.querySelector('.scroll-down')?.addEventListener('click', () => {
+                window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            });
+
+            // Swiper
+            new Swiper('.gallery-slider', {
+                loop: true, slidesPerView: 1, spaceBetween: 20, autoplay: { delay: 2800 },
+                pagination: { el: '.swiper-pagination', clickable: true },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            });
         });
     </script>
 </body>
